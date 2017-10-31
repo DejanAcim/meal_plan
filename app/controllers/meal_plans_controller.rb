@@ -21,6 +21,16 @@ class MealPlansController < ApplicationController
     end
   end
 
+  def show
+    @meal_plan = current_user.meal_plans.find(params[:id])
+  end
+
+  def index
+    @current_meal_plan = current_user.meal_plans.where("start_date <= ? AND end_date >= ?",
+                         Date.today, Date.today).first
+    @meal_plans = current_user.meal_plans.order("start_date desc")
+  end
+
   private
 
   def meal_plan_params

@@ -18,4 +18,8 @@ class MealPlan < ApplicationRecord
       meals.build(date: date, recipe_id: available_recipes.sample)
     end
   end
+
+  def to_s
+    "#{start_date} - #{end_date}"
+  end
 end
