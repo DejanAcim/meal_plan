@@ -1,6 +1,6 @@
 class MealPlan < ApplicationRecord
   belongs_to :user
-  has_many :meals, -> { order(:date) }, inverse_of: :meal_plan
+  has_many :meals, -> { order(:date) }, inverse_of: :meal_plan, dependent: :destroy
 
   accepts_nested_attributes_for :meals
 
